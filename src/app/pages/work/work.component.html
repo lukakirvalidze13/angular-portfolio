@@ -1,0 +1,63 @@
+<div class="terminal-container">
+    
+<div class="logs" #logsContainer>
+  <!-- Back button in top-right -->
+  <button class="back-home-btn" (click)="goHome()">← BACK TO HOME</button>
+  <button class="more-info-btn" (click)="showMoreInfo()">More Information</button>
+
+  <!-- Terminal logs -->
+  <div *ngFor="let log of logs">
+    {{ log }}
+  </div>
+    
+</div>
+
+
+  <div class="projects">
+    <div
+      *ngFor="let project of projects"
+      class="project-card"
+      [class.unlocked]="project.unlocked"
+      (click)="!project.unlocked && startUnlocking(project)"
+    >
+      <h3>{{ project.title }}</h3>
+      <p>{{ project.description }}</p>
+      <div *ngIf="project.unlocked" class="status">UNLOCKED</div>
+      <div *ngIf="!project.unlocked" class="status locked">LOCKED</div>
+    </div>
+  </div>
+
+  <div class="input-area" *ngIf="unlockingProject">
+    <label>Solve Puzzle to Unlock "{{ unlockingProject.title }}"</label>
+    <input
+      #answerInput
+      type="text"
+      placeholder="Type your answer"
+      (keyup.enter)="submitAnswer(answerInput)"
+    />
+    <button (click)="submitAnswer(answerInput)">Submit</button>
+  </div>
+
+  <div class="xp-bar">
+    <div class="xp" [style.width.%]="(xp / (level * 20)) * 100"></div>
+  </div>
+
+  <div class="level-display">Level: {{ level }} | XP: {{ xp }}</div>
+  
+</div>
+<!-- POPUP MESSAGE -->
+<div class="popup-message" *ngIf="showPopup">
+  <div class="popup-content">
+    <p>This is my very first project, currently working on others.</p>
+    <button (click)="closePopup()">Close</button>
+  </div>
+</div>
+
+<div *ngIf="showInfoPopup" class="info-popup-overlay">
+  <div class="info-popup">
+    <button class="info-popup-close" (click)="closeInfoPopup()">×</button>
+    <div class="info-popup-text">
+      {{ displayedText }}<span class="typewriter-cursor"></span>
+    </div>
+  </div>
+</div>

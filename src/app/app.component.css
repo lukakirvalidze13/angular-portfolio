@@ -1,0 +1,82 @@
+.loader-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #0f172a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+    visibility: visible;
+  }
+  
+  .loader-screen.fade-out {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+  }
+  
+  .loader-text {
+    font-size: 2.5rem;
+    font-weight: 700; /* Slightly bolder for better visibility */
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 0.1em; /* Reduced spacing for compactness */
+    color: #d1d5db; /* Slightly brighter soft silver */
+    user-select: none;
+  
+    /* Gradient text */
+    background: linear-gradient(135deg, #d1d5db, #a0aec0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  
+    /* Reduced subtle diamond glow for less flashiness */
+    text-shadow:
+      0 0 2px #a0aec0,
+      0 0 4px #8a9ef8,
+      0 0 6px #7f8fff;
+  
+    position: relative;
+    overflow: hidden;
+    border: 2px solid rgba(156, 175, 255, 0.3);
+    border-radius: 16px;
+    padding: 0 0.4em;
+    box-shadow:
+      0 0 6px rgba(156, 175, 255, 0.15),
+      inset 0 0 4px rgba(156, 175, 255, 0.2);
+  }
+  
+  .loader-text::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    left: -50%;
+    width: 40%;
+    height: 180%;
+  
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 255, 255, 0.18),
+      rgba(255, 255, 255, 0) 85%
+    );
+  
+    border-radius: 100%;
+    filter: blur(40px);
+    animation: smoothShimmer 1.5s linear infinite;
+    pointer-events: none;
+    mix-blend-mode: screen;
+  }
+  
+  @keyframes smoothShimmer {
+    0% {
+      left: -50%;
+    }
+    100% {
+      left: 300%;
+    }
+  }
+  

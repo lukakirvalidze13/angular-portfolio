@@ -1,0 +1,352 @@
+/* Reset and fonts */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: #0f172a;
+  color: #f8fafc;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #0f172a;
+  padding: 0rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* transition: all 0.4s cubic-bezier(0.65, 0, 0.35, 1); */
+  box-shadow: none;
+  animation: fadeInTop 1s cubic-bezier(0.65, 0, 0.35, 1)
+  forwards;
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.4); /* adjust for light mode */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background: radial-gradient(circle, #0018ff55, transparent 0%);
+
+}
+
+
+
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #38bdf8;
+  cursor: pointer;
+  animation: slideInLeft 1s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Nav */
+.nav {
+  display: flex;
+  gap: 2rem;
+  transition: max-height 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+  font-family: 'Audiowide';
+}
+
+.nav a {
+  position: relative;
+  color: var(--nav-text);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.3rem 0;
+  transition: color 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+  overflow: hidden;
+}
+
+.nav a:hover {
+  color: var(--nav-hover);
+  text-shadow: 0 0 4px var(--nav-hover);
+  color: rgba(255, 255, 255, 0.457);
+}
+
+.nav a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  left: 0;
+  bottom: -2px;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+  background: var(--nav-hover);
+
+}
+
+.nav a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -85%;
+  width: 20%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.968),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: right 0.3s cubic-bezier(0.25, 0, 0.35, 1);
+  z-index: 1;
+}
+
+
+.nav a:hover::after,
+.nav a.active::after {
+  transform: scaleX(1);
+
+  width: 100%;
+}
+
+.nav a:hover::before {
+  left: 100%;
+}
+
+
+.nav a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: var(--nav-hover);
+  left: 0;
+  bottom: -2px;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+  z-index: 2;
+}
+
+
+
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.burger span {
+  width: 25px;
+  height: 2px;
+  background: #f8fafc;
+  transition: all 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #1e293b;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  .nav.open {
+    max-height: 300px;
+    padding: 1rem 0;
+  }
+
+  .burger {
+    display: flex;
+  }
+}
+
+@keyframes fadeInTop {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-80px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+
+.theme-toggle-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+.theme-toggle {
+  position: relative;
+  width: 60px;
+  height: 30px;
+  background: var(--accent-color, #4f46e5);
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px;
+}
+.theme-toggle .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  color: #fff;
+}
+
+.theme-toggle .ball {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+  z-index: 2;
+}
+.theme-toggle:hover {
+  box-shadow: 0 0 12px #38bdf8, 0 0 4px #ffffff;
+}
+
+.icon {
+  font-size: 16px;
+  z-index: 2;
+  opacity: 0.4;
+  transition: opacity 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.sun {
+  color: #facc15;
+}
+
+.moon {
+  color: #4f46e5;
+}
+
+.ball {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  background: white;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1), background 0.3s;
+  z-index: 1;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+input[type="checkbox"]:checked + .theme-toggle .ball {
+  transform: translateX(30px);
+  background: #1e3a8a;
+}
+
+input[type="checkbox"]:checked + .theme-toggle {
+  background: linear-gradient(145deg, #0f172a, #1e293b);
+}
+
+input[type="checkbox"]:checked + .theme-toggle .sun {
+  opacity: 0.2;
+}
+
+input[type="checkbox"]:checked + .theme-toggle .moon {
+  opacity: 1;
+}
+
+input[type="checkbox"]:not(:checked) + .theme-toggle .sun {
+  opacity: 1;
+}
+
+input[type="checkbox"]:not(:checked) + .theme-toggle .moon {
+  opacity: 0.2;
+}
+
+
+:root {
+  --nav-text: white;
+  --nav-hover: #00bfff;
+  
+}
+
+
+body.dark-mode {
+  --nav-text: white;
+  --nav-hover: #00bfff;
+}
+
+body.light-mode {
+  --nav-text: #222;
+  --nav-hover: #0077ff;
+}
+
+.nav a:focus {
+  outline: 2px solid var(--nav-hover);
+  outline-offset: 4px;
+}
+
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--logo-color);
+  cursor: pointer;
+  animation: slideInLeft 1s cubic-bezier(0.65, 0, 0.35, 1);
+  font-family:'consolas';
+}
+
+.nav {
+  display: flex;
+  gap: 40px;
+}
+
+.magnetic-link {
+  display: inline-block;
+  transition: transform 0.2s ease;
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: relative;
+  color: white;
+}
+.magnetic-link {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  transition: transform 0.1s ease-out;
+  will-change: transform;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+}
+

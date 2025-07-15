@@ -1,0 +1,17 @@
+<div class="radial-selector" *ngIf="portalActivated">
+  <div class="wheel">
+    <div class="segment about" (click)="navigateTo('about')">
+      <span>About</span>
+    </div>
+    <div class="segment contact" (click)="navigateTo('contact')">
+      <span>Contact</span>
+    </div>
+    <div class="segment work" (click)="navigateTo('work')">
+      <span>Work</span>
+    </div>
+    <div class="segment home" (click)="goBackToHome()">
+      <span>Go Back</span>
+    </div>
+    <div class="center-circle"></div>
+  </div>
+</div>

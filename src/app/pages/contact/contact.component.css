@@ -1,0 +1,321 @@
+/* GENERAL SKEET STYLE PANEL */
+.skeet-panel {
+  background-color: #1c1c1c;
+  border: 1px solid #2e2e2e;
+  font-family: "Courier New", monospace;
+  color: #ccc;
+  font-size: 13px;
+  /* border-radius: 4px; */
+  overflow: hidden;
+  width: auto;
+}
+
+
+
+.sidebar.collapsed {
+  width: 60px;
+}
+
+.skeet-header {
+  padding: 6px 8px;
+  font-weight: bold;
+  color: #7abaff;
+  border-bottom: 1px solid #2e2e2e;
+  text-align: left;
+}
+
+.file-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.file-list li {
+  padding: 6px 8px;
+  margin: 4px 0;
+  background-color: #232323;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background 0.2s ease;
+}
+
+.file-list li .file-name {
+  margin-left: 6px;
+}
+
+.file-list li:hover {
+  background-color: #2f2f2f;
+  border-color: #444;
+}
+
+.file-list li.active {
+  background-color: #2b3b5a;
+  border-color: #7abaff;
+}
+
+/* COLLAPSED SIDEBAR — HIDE TEXT */
+.sidebar.collapsed .file-name,
+.sidebar.collapsed .skeet-header {
+  display: none;
+}
+
+/* MAIN PANEL HEADER (like skeet's window control) */
+.panel-header {
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  background-color: #2e2e2e;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.panel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.panel-dot.red {
+  background-color: #ff5f56;
+}
+.panel-dot.yellow {
+  background-color: #ffbd2e;
+}
+.panel-dot.green {
+  background-color: #27c93f;
+}
+
+.panel-title {
+  color: #7abaff;
+  font-weight: bold;
+  margin-left: auto;
+  font-size: 12px;
+}
+
+/* MAIN CONTENT */
+.panel-content {
+  padding: 16px;
+}
+
+.intro-text {
+  color: #aaa;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  background-color: #181818;
+  border: 1px solid #333;
+  padding: 8px;
+  margin-bottom: 10px;
+  color: #ccc;
+  font-size: 13px;
+}
+
+.contact-form button {
+  background-color: #1e90ff;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.contact-form button:hover {
+  background-color: #0074d9;
+}
+.contact-wrapper {
+  display: flex;
+  height: 100vh; /* Full viewport height */
+  width: 100%;
+}
+
+.sidebar {
+  height: 100vh; /* Force full height of screen */
+  flex-shrink: 0;
+  transition: width 0.25s ease;
+  padding: 8px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  
+  
+}
+
+.contact-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 9999; /* Ensure it's on top of header/footer */
+  display: flex;
+  overflow: hidden;
+}
+.contact-wrapper {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+/* Sidebar starts at 30%, collapses to 60px */
+.sidebar {
+  flex: 0 0 30%;            /* flex-grow:0, flex-shrink:0, flex-basis:30% */
+  max-width: 15%;
+  min-width: 60px;          /* minimum when collapsed */
+  height: 100vh;
+  background-color: #1c1c1c;
+  padding: 12px 8px;
+  box-sizing: border-box;
+  transition: flex-basis 0.3s ease, max-width 0.3s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar.collapsed {
+  flex-basis: 60px !important;  /* override to 60px */
+  max-width: 60px !important;
+}
+
+/* Panel fills remaining space (70%) */
+.panel {
+  flex: 1 1 70%;        /* flexible: grows and shrinks */
+  height: 100vh;
+  color: #f3f3f3;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+
+.email-quick-link {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  font-weight: 600;
+  font-family: monospace;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  z-index: 10000;
+      background-color: #00000033;
+    color: rgb(255, 255, 255);
+    padding: 8px 16px;
+    border: none;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.2sease;
+}
+
+.email-quick-link:hover {
+  background-color: #1e40af; /* Darker blue */
+  box-shadow: 0 6px 16px rgba(30, 64, 175, 0.7);
+}
+
+
+.go-back-button {
+  width: 100%;
+  padding: 12px 10px;
+  margin-top: 20px;
+  border: none;
+  background-color: #2563eb;
+  color: white;
+  font-weight: 700;
+  font-family: monospace;
+  cursor: pointer;
+  /* border-radius: 8px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  user-select: none;
+  transition: background-color 0.3s ease;
+}
+
+.go-back-button:hover {
+  background-color: #1e40af;
+}
+
+.go-back-button span {
+  white-space: nowrap;
+}
+
+.go-back-button {
+  margin-top: auto; /* push to bottom */
+  width: 100%;
+  padding: 6px 8px;
+  background-color: #232323;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: #ccc;
+  font-family: monospace;
+  font-weight: normal;
+  gap: 8px;
+  user-select: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.go-back-button:hover {
+  background-color: #2f2f2f;
+  border-color: #444;
+}
+
+.permission-message {
+  position: fixed;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ff5555;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 3px;
+  font-family: monospace;
+  font-weight: bold;
+  z-index: 10000;
+  user-select: none;
+  pointer-events: none;
+  box-shadow: 0 0 10px #ff5555aa;
+}
+@media (max-width: 768px) {
+  .sidebar {
+    flex: 0 0 60px !important;
+    max-width: 60px !important;
+  }
+
+  .sidebar .file-name,
+  .sidebar .skeet-header,
+  .go-back-button span {
+    display: none;
+  }
+
+  .panel {
+    flex: 1 1 auto;
+  }
+
+  .panel-title {
+    font-size: 11px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 14px;
+  }
+
+  .contact-form button,
+  .email-quick-link {
+    width: 100%;
+    font-size: 14px;
+    padding: 12px;
+  }
+}

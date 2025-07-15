@@ -1,0 +1,52 @@
+<div class="contact-wrapper">
+  <!-- Sidebar -->
+  <div class="sidebar skeet-panel" [class.collapsed]="isSidebarCollapsed" 
+       (mouseenter)="isSidebarCollapsed = false" 
+       (mouseleave)="isSidebarCollapsed = true">
+
+    <div class="skeet-header">📁 Contact</div>
+
+    <ul class="file-list">
+      <li *ngFor="let file of files" 
+          (click)="selectFile(file)" 
+          [class.active]="file === activeFile">
+        📄 <span class="file-name">{{ file.name }}.txt</span>
+      </li>
+      
+    </ul>
+        <button class="go-back-button" (click)="goBack()" [title]="isSidebarCollapsed ? 'Go Back' : ''">
+      ✖️ <span *ngIf="!isSidebarCollapsed">Go Back</span>
+    </button>
+  </div>
+
+  <!-- Main Panel -->
+  <div class="panel skeet-panel">
+<div class="panel-header">
+  <button class="panel-dot red" aria-label="Close" (click)="closePanel()"></button>
+<button class="panel-dot yellow" aria-label="Minimize" (click)="showPermissionMessage()"></button>
+<button class="panel-dot green" aria-label="Maximize" (click)="showPermissionMessage()"></button>
+  <span class="panel-title">{{ activeFile.name }}.txt</span>
+</div>
+<div *ngIf="permissionMessage" class="permission-message">
+  {{ permissionMessage }}
+</div>
+
+    <div class="panel-content" *ngIf="activeFile">
+      <p class="intro-text">{{ activeFile.message }}</p>
+
+      <form class="contact-form" (submit)="sendMessage()">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Email Address" required />
+        <textarea rows="5" placeholder="Message..." required></textarea>
+        <button type="submit">Send ✉️</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- Email quick link -->
+
+<a href="mailto:luka&#64;gmail.com" class="email-quick-link" target="_blank" rel="noopener">
+  📧 lukakirvalidze20041&#64;gmail.com
+</a>

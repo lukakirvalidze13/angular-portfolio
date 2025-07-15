@@ -1,0 +1,282 @@
+/* Sidebar base */
+.sidebar {
+  width: 16rem;
+  padding: 1rem;
+  background: #121212; /* very dark gray/black */
+  border-right: 1px solid #333;
+  box-shadow: inset 0 0 10px #0008;
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+  font-family: 'Fira Mono', monospace;
+}
+
+/* Tab buttons */
+.tab {
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  border-radius: 0.5rem;
+  background: #1e1e1e; /* dark gray */
+  border: 1px solid transparent;
+  color: #ddd;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: left;
+  box-shadow: 0 1px 3px #0006 inset;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.tab:hover {
+  background-color: #2c2c2c;
+  border-color: #888;
+  color: #fff;
+}
+
+.tab.active {
+  background-color: #333;
+  border-color: #bbb;
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 0 8px #444 inset;
+}
+
+/* Go Back Button */
+.go-back-btn {
+  margin-top: auto; /* stick to bottom */
+  padding: 0.75rem 1rem;
+  background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
+  border: 1.5px solid #444;
+  color: #eee;
+  border-radius: 0.5rem;
+  font-family: 'Fira Mono', monospace;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 4px 4px 8px #0008, -4px -4px 8px #44444480;
+  text-align: center;
+  user-select: none;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.15s ease;
+}
+
+.go-back-btn:hover {
+  background: linear-gradient(145deg, #3a3a3a, #2e2e2e);
+  color: #fff;
+  box-shadow: 0 0 10px #666 inset;
+  transform: translateY(-1.5px);
+}
+
+.go-back-btn:active {
+  background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+/* Scrollbar for sidebar */
+.sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: #121212;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 4px;
+}
+
+.skeet-box {
+  background: #181818;
+  border: 1px solid #333;
+  border-radius: 1rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+  font-family: 'Fira Mono', monospace;
+  line-height: 1.7;
+}
+
+.skeet-title {
+  font-size: 1.75rem;
+  margin-bottom: 1.25rem;
+  font-weight: 700;
+  color: #00bcd4; /* subtle accent */
+  border-bottom: 1px solid #444;
+  padding-bottom: 0.5rem;
+  font-family: Orbitron;
+}
+.skeet-title:hover{
+  color: #00e1ff;
+}
+
+.skeet-section {
+  margin-top: 1.5rem;
+}
+
+.skeet-label {
+  font-size: 1.2rem;
+  color: #bbb;
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}
+
+.skeet-text {
+  font-size: 1rem;
+  color: #ddd;
+  padding-left: 0.5rem;
+}
+.skeet-text:hover{
+  color: rgb(255, 255, 255);
+}
+
+.skeet-list {
+  list-style-type: '➤ ';
+  padding-left: 1.25rem;
+  color: #ccc;
+  font-size: 1rem;
+}
+.skeet-list li:hover{
+  color: white;
+}
+
+.skeet-list li {
+  margin-bottom: 0.75rem;
+  padding-left: 0.25rem;
+}
+
+/* Fade + slide in with stagger */
+.skeet-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeSlideIn 0.7s ease-out forwards;
+  animation-delay: var(--delay, 0s);
+}
+
+/* Give different delays if needed */
+.skeet-animate:nth-child(1) { --delay: 0.1s; }
+.skeet-animate:nth-child(2) { --delay: 0.3s; }
+.skeet-animate:nth-child(3) { --delay: 0.5s; }
+.skeet-animate:nth-child(4) { --delay: 0.7s; }
+
+@keyframes fadeSlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Optional: Hover pop effect */
+.skeet-box:hover {
+  transform: scale(1.01);
+  transition: transform 0.3s ease;
+  box-shadow: 0 0 5px rgba(230, 230, 230, 0.982);
+  
+}
+.sidebar {
+  width: 4rem; /* collapsed width */
+  padding: 1rem 0.5rem;
+  background: #121212;
+  border-right: 1px solid #333;
+  box-shadow: inset 0 0 10px #0008;
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+  font-family: 'Fira Mono', monospace;
+  transition: width 0.3s ease;
+  overflow: hidden; /* hides text when collapsed */
+}
+
+.sidebar:hover {
+  width: 16rem; /* expanded width */
+  padding: 1rem;
+}
+
+/* Optional: Style for tab text when collapsed */
+.tab {
+  white-space: nowrap;
+  overflow: hidden;
+  transition: color 0.3s ease, background 0.3s ease;
+}
+
+/* Optional: make tab label fade in/out */
+.sidebar:not(:hover) .tab {
+  text-align: center;
+}
+
+.sidebar:not(:hover) .tab::after {
+  content: '';
+}
+
+/* Go Back button hidden when collapsed */
+.sidebar:not(:hover) .go-back-btn {
+  opacity: 1;
+  pointer-events: none;
+  height: fit-content;
+  overflow: hidden;
+  transition: opacity 0.2s ease;
+}
+
+.sidebar:hover .go-back-btn {
+  opacity: 1;
+}
+.label {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+}
+
+.sidebar:hover .label {
+  opacity: 1;
+}
+
+
+/* Sidebar Collapsible */
+.sidebar {
+  width: 4rem;
+  transition: width 0.3s ease;
+  overflow: hidden;
+}
+
+.sidebar:hover {
+  width: 16rem;
+}
+
+/* Icon and Label Styling */
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.tab-icon {
+  font-size: 1.25rem;
+  min-width: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+      display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.tab-label {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar:hover .tab-label {
+  opacity: 1;
+}
+
+.icon {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar:hover .icon {
+  opacity: 0;
+}

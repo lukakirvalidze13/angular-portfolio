@@ -1,0 +1,46 @@
+
+<div class="bg-auras">
+  <div class="aura aura1"></div>
+  <div class="aura aura2"></div>
+</div>
+<div
+  class="portal-container"
+  (click)="activatePortal()"
+  (mousemove)="onMouseMove($event)"
+  (mouseleave)="onMouseLeave()"
+  [class.opening]="portalOpening"
+  [class.active]="portalActivated"
+>
+  <div
+  
+    class="orb"
+    #orbRef
+    *ngIf="!portalActivated && !portalOpening"
+    [class.opening]="portalOpening"
+    
+  
+
+  >    <!-- Orbiting mini-orbs -->
+    <div class="mini-orbs">
+      <div class="orbit-orb orb1"></div>
+      <div class="orbit-orb orb2"></div>
+      <div class="orbit-orb orb3"></div>
+    </div><div class="particles">
+  <div
+    class="particle"
+    *ngFor="let p of particles"
+    [ngStyle]="{
+      '--x': p.x,
+      '--delay': p.delay + 's',
+      '--duration': p.duration + 's'
+    }"
+  ></div>
+</div>
+ </div>
+
+  <div *ngIf="portalOpening && !portalActivated" class="terminal-screen">
+    <pre *ngFor="let line of terminalLines" class="terminal-line">{{ line }}</pre>
+  </div>
+</div>
+
+

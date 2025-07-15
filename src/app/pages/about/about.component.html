@@ -1,0 +1,66 @@
+<div class="fixed inset-0 z-[999] flex bg-[#0f0f0f] text-white font-mono select-none">
+
+  <!-- Sidebar -->
+  <div class="sidebar" #sidebar>
+    
+<div
+  *ngFor="let tab of tabs"
+  (click)="setTab(tab.id)"
+  class="tab"
+  [ngClass]="{ 'active': activeTab === tab.id }"
+>
+  <span class="tab-icon">{{ tab.icon }}</span>
+  <span class="tab-label">{{ tab.label }}</span>
+</div>
+
+
+    <!-- Go Back Button -->
+ <button (click)="goHome()" class="go-back-btn">
+  <span class="icon">⬅</span>
+  <span class="label">Go Back</span>
+</button>
+
+
+  </div>
+
+  <!-- Content -->
+  <div #content class="flex-1 p-8 overflow-y-auto">
+    <ng-container [ngSwitch]="activeTab">
+      <div *ngSwitchCase="'journey'" class="skeet-box skeet-animate" class="skeet-box">
+  <h2 class="skeet-title">My Journey</h2>
+  <div class="skeet-section">
+    <h3 class="skeet-label">Education & Discovery</h3>
+    <p class="skeet-text">I studied Economics and Marketing in Italy at FederigoEnriques, and discovered a passion for IT through front-end courses at STEP IT Academy. I also earned a C2 English Cambridge certificate.</p>
+  </div>
+  <div class="skeet-section">
+    <h3 class="skeet-label">Career Milestones</h3>
+    <p class="skeet-text">Worked in sales back in Georgia, increasing revenue and earning positive feedback. Recently enrolled in a C++ backend course to deepen my development skills.</p>
+  </div>
+</div>
+
+<div *ngSwitchCase="'offer'" class="skeet-box skeet-animate" class="skeet-box">
+  <h2 class="skeet-title">What I Offer</h2>
+  <ul class="skeet-list">
+    <li>Fast learner with a strong grasp of both sales and IT fundamentals</li>
+    <li>Great communication and teamwork skills</li>
+    <li>Problem-solver with a creative approach and attention to detail</li>
+    <li>Dedicated to delivering high-quality results and growing continuously</li>
+  </ul>
+</div>
+
+<div *ngSwitchCase="'seek'" class="skeet-box skeet-animate" class="skeet-box">
+  <h2 class="skeet-title">My Goals</h2>
+  <p class="skeet-text">I'm looking to grow my career remotely in the IT field, contributing to impactful projects while sharpening my development skills. I'm excited to work with inspiring teams that value innovation and constant learning.</p>
+</div>
+
+
+
+<div *ngSwitchCase="'personality'" class="skeet-box skeet-animate" class="skeet-box">
+  <h2 class="skeet-title">Personality</h2>
+  <ul class="skeet-list">
+    <li>Friendly and approachable</li>
+    <li>Creative thinker, always exploring new ideas</li>
+    <li>Focused and proactive under pressure</li>
+    <li>Motivated by growth and team success</li>
+  </ul>
+</div>
