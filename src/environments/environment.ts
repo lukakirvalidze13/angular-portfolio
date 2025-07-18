@@ -1,3 +1,3 @@
 export const environment = {
-  url: "sage-basbousa-edeb8d.netlify.app"  // hardcode your real API or site base URL
+  url: 'http://localhost:4200' // local dev
 };
