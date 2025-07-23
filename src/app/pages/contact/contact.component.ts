@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import emailjs from '@emailjs/browser';
+
 
 @Component({
   selector: 'app-contact',
@@ -9,9 +11,28 @@ import { Router } from '@angular/router';
 export class ContactComponent {
     constructor(private router: Router) { }  // only declare router here
   
-  sendMessage() {
-    alert("Message sent! (Functionality placeholder)");
+sendMessage() {
+  const form = document.querySelector('.contact-form') as HTMLFormElement;
+
+  if (!form) {
+    alert("Form not found.");
+    return;
   }
+
+  emailjs.sendForm(
+    'portfolio',    // 🔁 Replace this
+    'template_hgh2bvf',   // 🔁 Replace this
+    form,
+    '222asLRJy7fUfJDbj'     // 🔁 Replace this
+  ).then(() => {
+    alert('Message sent successfully! ✅');
+    form.reset();
+  }, (error) => {
+    alert('Failed to send message ❌');
+    console.error('EmailJS Error:', error);
+  });
+}
+
   isSidebarCollapsed = true;
 
   files = [
@@ -54,5 +75,6 @@ goBack() {
     }, 1500);
   }
 }
+
 
 
