@@ -1,66 +1,60 @@
 <div class="fixed inset-0 z-[999] flex bg-[#0f0f0f] text-white font-mono select-none">
 
-  <!-- Sidebar -->
   <div class="sidebar" #sidebar>
-    
-<div
-  *ngFor="let tab of tabs"
-  (click)="setTab(tab.id)"
-  class="tab"
-  [ngClass]="{ 'active': activeTab === tab.id }"
->
-  <span class="tab-icon">{{ tab.icon }}</span>
-  <span class="tab-label">{{ tab.label }}</span>
-</div>
+    <div
+      *ngFor="let tab of tabs"
+      (click)="setTab(tab.id)"
+      class="tab"
+      [ngClass]="{ 'active': activeTab === tab.id }"
+    >
+      <span class="tab-icon">{{ tab.icon }}</span>
+      <span class="tab-label">{{ tab.label }}</span>
+    </div>
 
-
-    <!-- Go Back Button -->
- <button (click)="goHome()" class="go-back-btn">
-  <span class="icon">⬅</span>
-  <span class="label">Go Back</span>
-</button>
-
-
+    <button (click)="goHome()" class="go-back-btn">
+      <span class="icon">⬅</span>
+      <span class="label">Go Back</span>
+    </button>
   </div>
 
-  <!-- Content -->
   <div #content class="flex-1 p-8 overflow-y-auto">
     <ng-container [ngSwitch]="activeTab">
-      <div *ngSwitchCase="'journey'" class="skeet-box skeet-animate" class="skeet-box">
-  <h2 class="skeet-title">My Journey</h2>
-  <div class="skeet-section">
-    <h3 class="skeet-label">Education & Discovery</h3>
-    <p class="skeet-text">I studied Economics and Marketing in Italy at FederigoEnriques, and discovered a passion for IT through front-end courses at STEP IT Academy. I also earned a C2 English Cambridge certificate.</p>
+      <div *ngSwitchCase="'journey'" class="skeet-box skeet-animate">
+        <h2 class="skeet-title">My Journey</h2>
+        <div class="skeet-section">
+          <h3 class="skeet-label">Education & Exploration</h3>
+          <p class="skeet-text">My academic path began with a solid foundation in Economics and Marketing at FederigoEnriques in Italy, where I cultivated a strategic mindset. It was there that I unearthed a profound passion for Information Technology, propelling me to explore the digital realm through impactful front-end development courses at STEP IT Academy. Adding to my global readiness, I proudly hold a C2 English Cambridge certificate, ensuring seamless communication across diverse landscapes.</p>
+        </div>
+        <div class="skeet-section">
+          <h3 class="skeet-label">Career Evolution & Growth</h3>
+          <p class="skeet-text">My professional journey took root in sales back in Georgia, where I consistently delivered tangible results, not only significantly increasing revenue but also earning widespread positive feedback for my client-centric approach. Driven by an insatiable curiosity and a commitment to continuous learning, I've recently embarked on an intensive C++ backend development course, meticulously honing my skills to dive deeper into the intricate world of software engineering and build robust solutions.</p>
+        </div>
+      </div>
+
+      <div *ngSwitchCase="'offer'" class="skeet-box skeet-animate">
+        <h2 class="skeet-title">What I Offer</h2>
+        <ul class="skeet-list">
+          <li>An Agile Learner with an intuitive grasp of both strategic sales dynamics and foundational IT principles, ready to master new challenges swiftly.</li>
+          <li>Exceptional Communicator & Collaborator, adept at fostering strong team synergies and articulating complex ideas with clarity and impact.</li>
+          <li>A Strategic Problem-Solver who approaches challenges with a blend of creative thinking, meticulous attention to detail, and a relentless drive for effective solutions.</li>
+          <li>Dedicated to Excellence, committed to consistently delivering high-quality results and relentlessly pursuing continuous personal and professional growth.</li>
+        </ul>
+      </div>
+
+      <div *ngSwitchCase="'seek'" class="skeet-box skeet-animate">
+        <h2 class="skeet-title">My Goals</h2>
+        <p class="skeet-text">I am passionately driven to cultivate a thriving remote career within the IT sector, where I can dedicate my efforts to impactful projects that challenge the status quo. My aspiration is to continuously sharpen my development expertise while collaborating within inspiring, forward-thinking teams that not only champion innovation but also celebrate a culture of relentless, constant learning and mutual success.</p>
+      </div>
+
+      <div *ngSwitchCase="'personality'" class="skeet-box skeet-animate">
+        <h2 class="skeet-title">Personality</h2>
+        <ul class="skeet-list">
+          <li>A Naturally Engaging Presence: Friendly, approachable, and skilled at building rapport effortlessly.</li>
+          <li>An Innovative Mindset: A true creative thinker, perpetually exploring novel ideas and fresh perspectives to solve challenges.</li>
+          <li>Composed and Proactive Under Pressure: Maintains unwavering focus and takes decisive action, even in high-stakes or demanding situations.</li>
+          <li>Driven by Collective Achievement: Deeply motivated by personal growth and finds immense satisfaction in contributing to the shared success of the team.</li>
+        </ul>
+      </div>
+    </ng-container>
   </div>
-  <div class="skeet-section">
-    <h3 class="skeet-label">Career Milestones</h3>
-    <p class="skeet-text">Worked in sales back in Georgia, increasing revenue and earning positive feedback. Recently enrolled in a C++ backend course to deepen my development skills.</p>
-  </div>
-</div>
-
-<div *ngSwitchCase="'offer'" class="skeet-box skeet-animate" class="skeet-box">
-  <h2 class="skeet-title">What I Offer</h2>
-  <ul class="skeet-list">
-    <li>Fast learner with a strong grasp of both sales and IT fundamentals</li>
-    <li>Great communication and teamwork skills</li>
-    <li>Problem-solver with a creative approach and attention to detail</li>
-    <li>Dedicated to delivering high-quality results and growing continuously</li>
-  </ul>
-</div>
-
-<div *ngSwitchCase="'seek'" class="skeet-box skeet-animate" class="skeet-box">
-  <h2 class="skeet-title">My Goals</h2>
-  <p class="skeet-text">I'm looking to grow my career remotely in the IT field, contributing to impactful projects while sharpening my development skills. I'm excited to work with inspiring teams that value innovation and constant learning.</p>
-</div>
-
-
-
-<div *ngSwitchCase="'personality'" class="skeet-box skeet-animate" class="skeet-box">
-  <h2 class="skeet-title">Personality</h2>
-  <ul class="skeet-list">
-    <li>Friendly and approachable</li>
-    <li>Creative thinker, always exploring new ideas</li>
-    <li>Focused and proactive under pressure</li>
-    <li>Motivated by growth and team success</li>
-  </ul>
 </div>

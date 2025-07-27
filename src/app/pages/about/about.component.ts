@@ -8,6 +8,7 @@ gsap.registerPlugin(CSSPlugin);
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
+
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
